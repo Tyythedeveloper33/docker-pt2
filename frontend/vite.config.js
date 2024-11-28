@@ -15,6 +15,7 @@ export default defineConfig(({ mode }) => ({
     proxy: {
       "/api": {
         target: "http://backend:5000",
+        changeOrigin: true
       }
     },
     host: "0.0.0.0"
