@@ -2,7 +2,7 @@ from flask import Flask
 from flask_cors import CORS
 from app.config import Config
 from app.database import db
-
+from app.routes import api
 
 # Just initialize the app (no function)
 app = Flask(__name__)
@@ -17,8 +17,8 @@ with app.app_context():
     # Initialize database
     db.init_app(app)
     db.create_all()
-    
-# TODO: Import routes
 
+
+app.register_blueprint(api , url_prefix="/api")
 if __name__ == '__main__':
     app.run()
